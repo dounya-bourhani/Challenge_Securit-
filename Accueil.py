@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-data = pd.read_csv("C:/Users/ndieng1/Documents/Challenge-secu/Jeu-2-projet.csv", sep=',')
+data = pd.read_csv("./attacks.csv", sep=',')
 def main():
     
 

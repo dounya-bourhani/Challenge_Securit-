@@ -4,22 +4,22 @@ import plotly.express as px
 
 
 # Chargement des données (assurez-vous d'adapter le chemin du fichier)
-data = pd.read_csv("C:/Users/ndieng1/Documents/Challenge-secu/new-logs.csv", sep=',')
+data = pd.read_csv("./attacks.csv", sep=',')
 
 st.header("Visualisation interactive des données")
-source_ip_counts = data['ipSrc'].value_counts()
+source_ip_counts = data['ipsrc'].value_counts()
 selected_source_ip = st.selectbox("Sélectionnez une adresse IP source", source_ip_counts.index)
 
 # Filtrer les données pour l'adresse IP sélectionnée
-selected_ip_data = data[data['ipSrc'] == selected_source_ip]
+selected_ip_data = data[data['ipsrc'] == selected_source_ip]
 
 # Afficher la représentation graphique interactive
-fig_ip = px.bar(selected_ip_data, x='ipDest', color='action', title=f'Occurrences de destinations pour {selected_source_ip}')
+fig_ip = px.bar(selected_ip_data, x='ipdst', color='action', title=f'Occurrences de destinations pour {selected_source_ip}')
 st.plotly_chart(fig_ip)
 
 
 # Utilisation de Plotly Express pour créer un histogramme avec des couleurs spécifiques
-fig_protocol_distribution = px.histogram(data, x='Prot', color_discrete_sequence=['deepskyblue', 'dodgerblue'],
+fig_protocol_distribution = px.histogram(data, x='proto', color_discrete_sequence=['deepskyblue', 'dodgerblue'],
                                             title="Histogramme de la Répartition des Protocoles")
 
 # Affichage de l'histogramme
